@@ -12,6 +12,7 @@ packer.startup(function(use)
 		"L3MON4D3/LuaSnip",
 		tag = "v<CurrentMajor>.*"
 	}
+	use "windwp/nvim-autopairs" -- INFO: Plugin for auto complete pairs
 	use "stevearc/dressing.nvim" -- TODO: need to config and learn that
 	use "ziontee113/icon-picker.nvim"
 	use {
