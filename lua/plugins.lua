@@ -5,7 +5,7 @@ if not status then
 	return
 end
 
-require('icon-picker').setup { disable_legacy_commands = false }
+require('icon-picker').setup { disable_legacy_commands = true }
 
 packer.startup(function(use)
 	use {

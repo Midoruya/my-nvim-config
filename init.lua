@@ -16,18 +16,6 @@ vim.opt.sidescroll = 1
 vim.opt.number = true
 vim.opt.syntax = 'on'
 
---vim.api.nvim_create_autocmd('VimEnter',
---	{
---		pattern = '*',
---		command = 'NERDTree'
---	})
---vim.api.nvim_create_autocmd('VimEnter',
---	{
---		pattern = '*',
---		command = 'PlugUpdate'
---	})
-
---vim.api.nvim_create_autocmd('BufEnter',
---	{
---		command = "if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif"
---	})
+-- TODO: added shortcut for add buffer pages
+-- TODO: added shortcut for remove buffer pages
+-- TODO: added shortcut for swith betwen buffer pages
