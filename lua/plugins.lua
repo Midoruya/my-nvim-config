@@ -1,13 +1,16 @@
 local status, packer = pcall(require, 'packer')
 
 if not status then
-	print('Nvim packeg manager [ Packer ] is not intalled')
+	print('Nvim packeg manager [ Packer ] is not installed')
 	return
 end
 
-require('icon-picker').setup { disable_legacy_commands = true }
+-- require('icon-picker').setup { disable_legacy_commands = true }
+
+vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
+	use { "williamboman/mason.nvim" }
 	use {
 		"L3MON4D3/LuaSnip",
 		tag = "v<CurrentMajor>.*"
