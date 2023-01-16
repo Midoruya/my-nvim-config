@@ -5,25 +5,33 @@ if not setup then
 	return
 end
 
-lspconfig['vimls'].setup {
-	diagnostic = {
-		enable = true
-	},
-	indexes = {
-		count = 3,
-		gap = 100,
-		projectRootPatterns = { "runtime", "nvim", ".git", "autoload", "plugin" },
-		runtimepath = true
-	},
-	isNeovim = true,
-	iskeyword = "@,48-57,_,192-255,-#",
-	runtimepath = "",
-	suggest = {
-		fromRuntimepath = true,
-		fromVimruntime = true
-	},
-	vimruntime = ""
-}
+function on_attach(client, bufnr)
+	-- format on save
+	if client.server_capabilities.documentFormattingProvider then
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = vim.api.nvim_create_augroup("Format", { clear = true }),
+			buffer = bufnr,
+			callback = function() vim.lsp.buf.formatting_seq_sync() end
+		})
+	end
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+lspconfig.sumneko_lua.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.tsserver.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+lspconfig.volar.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 
 vim.cmd [[
   set completeopt=menuone,noinsert,noselect

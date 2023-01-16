@@ -10,7 +10,12 @@ end
 vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
-	use { "williamboman/mason.nvim" }
+	----------------------------------------------------------------
+	--                            LSP                             --
+	----------------------------------------------------------------
+	use "williamboman/mason.nvim"
+	use "williamboman/mason-lspconfig.nvim"
+	use 'neovim/nvim-lspconfig' -- INFO: Configurations for Nvim LSP
 	use {
 		"L3MON4D3/LuaSnip",
 		tag = "v<CurrentMajor>.*"
@@ -37,7 +42,6 @@ packer.startup(function(use)
 	use 'andweeb/presence.nvim' -- INFO: plugin for Discord PRC
 	use 'wbthomason/packer.nvim' -- INFO: packer as package manager
 	use 'navarasu/onedark.nvim' -- INFO: color them pluging
-	use 'neovim/nvim-lspconfig' -- INFO: Configurations for Nvim LSP
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'

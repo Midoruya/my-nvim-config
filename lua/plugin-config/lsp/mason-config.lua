@@ -1,4 +1,5 @@
 local setup, mason = pcall(require, 'mason')
+local path         = require('mason-core.path')
 
 if not setup then
 	print('Plugin mason not installed')
@@ -6,7 +7,7 @@ end
 
 mason.setup {
     -- The directory in which to install packages.
-    -- install_root_dir = path.concat { vim.fn.stdpath "data", "mason" },
+    install_root_dir = path.concat { vim.fn.stdpath "data", "mason" },
 
     -- Where Mason should put its bin location in your PATH. Can be one of:
     -- - "prepend" (default, Mason's bin location is put first in PATH)
@@ -17,7 +18,7 @@ mason.setup {
 
     pip = {
         -- Whether to upgrade pip to the latest version in the virtual environment before installing packages.
-        upgrade_pip = false,
+        upgrade_pip = true,
 
         -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior
         -- and is not recommended.
@@ -46,7 +47,7 @@ mason.setup {
     -- The provider implementations to use for resolving package metadata (latest version, available versions, etc.).
     -- Accepts multiple entries, where later entries will be used as fallback should prior providers fail.
     -- Builtin providers are:
-    --   - mason.providers.registry-api (default) - uses the https://api.mason-registry.dev API
+    --   - mason.providers.registray-api (default) - uses the https://api.mason-registry.dev API
     --   - mason.providers.client                 - uses only client-side tooling to resolve metadata
     providers = {
         "mason.providers.registry-api",
